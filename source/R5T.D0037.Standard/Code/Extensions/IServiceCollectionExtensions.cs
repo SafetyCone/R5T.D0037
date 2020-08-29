@@ -6,8 +6,11 @@ using R5T.D0037;
 using R5T.D0037.D0038;
 using R5T.D0038;
 using R5T.D0038.L0001;
+using R5T.D0046;
+using R5T.D0046.Standard;
 
 using R5T.Dacia;
+using R5T.Polidea;
 
 
 namespace R5T.D0037.Standard
@@ -20,11 +23,17 @@ namespace R5T.D0037.Standard
         public static
             (
             IServiceAction<IGitOperator> Main,
-            IServiceAction<ILibGit2SharpOperator> libGit2SharpOperatorAction
+            IServiceAction<ILibGit2SharpOperator> libGit2SharpOperatorAction,
+            (
+            IServiceAction<IGitAuthenticationProvider> Main,
+            IServiceAction<IGitHubAuthenticationProvider> gitHubAuthenticationProviderAction
+            ) GitAuthenticationProviderAction
             )
         AddGitOperatorAction(this IServiceCollection services)
         {
-            var libGit2SharpOperatorAction = services.AddLibGit2SharpOperatorAction();
+            var gitAuthenticationProviderAction = services.AddGitAuthenticationProviderAction();
+
+            var libGit2SharpOperatorAction = services.AddLibGit2SharpOperatorAction(gitAuthenticationProviderAction.Main);
 
             var gitOperatorAction = services.AddLibGit2SharpBasedGitOperatorAction(
                 libGit2SharpOperatorAction);
@@ -32,7 +41,8 @@ namespace R5T.D0037.Standard
             return
                 (
                 gitOperatorAction,
-                libGit2SharpOperatorAction
+                libGit2SharpOperatorAction,
+                gitAuthenticationProviderAction
                 );
         }
 

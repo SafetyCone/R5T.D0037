@@ -19,30 +19,27 @@ namespace R5T.D0037.D0038
 
         public Task<bool> HasUnpushedLocalChanges(LocalRepositoryDirectoryPath repositoryDirectoryPath)
         {
-            var hasUnpushedLocalChanges = this.LibGit2SharpOperator.HasUnpushedLocalChanges(repositoryDirectoryPath);
-
-            return Task.FromResult(hasUnpushedLocalChanges);
+            return this.LibGit2SharpOperator.HasUnpushedLocalChanges(repositoryDirectoryPath);
         }
 
         public Task<bool> HasUnpulledOriginMasterChanges(LocalRepositoryDirectoryPath repositoryDirectoryPath)
         {
-            var hasUnpulledMasterBranchChanges = this.LibGit2SharpOperator.HasUnpulledMasterBranchChanges(repositoryDirectoryPath);
-
-            return Task.FromResult(hasUnpulledMasterBranchChanges);
+            return this.LibGit2SharpOperator.HasUnpulledMasterBranchChanges(repositoryDirectoryPath);
         }
 
         public Task<RemoteRepositoryUrl> GetOriginRepositoryUrlAsync(LocalRepositoryContainedPath path)
         {
-            var originRepositoryUrl = this.LibGit2SharpOperator.GetRemoteOriginUrl(path);
-
-            return Task.FromResult(originRepositoryUrl);
+            return this.LibGit2SharpOperator.GetRemoteOriginUrl(path);
         }
 
         public Task<RevisionIdentity> GetLatestLocalMasterRevision(LocalRepositoryContainedPath path)
         {
-            var latestLocalMasterRevision = this.LibGit2SharpOperator.GetLatestLocalMasterRevision(path);
+            return this.LibGit2SharpOperator.GetLatestLocalMasterRevision(path);
+        }
 
-            return Task.FromResult(latestLocalMasterRevision);
+        public Task Fetch(LocalRepositoryDirectoryPath localRepositoryDirectoryPath)
+        {
+            return this.LibGit2SharpOperator.Fetch(localRepositoryDirectoryPath);
         }
     }
 }

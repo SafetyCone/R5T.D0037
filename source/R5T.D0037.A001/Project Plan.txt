@@ -1,0 +1,4 @@
+R5T.D0037.A001 - LibGit2SharpBasedGitOperator (R5T.D0037.D0028) service aggregation.
+
+Goals
+

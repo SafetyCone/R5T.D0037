@@ -8,6 +8,10 @@ namespace R5T.D0037
 {
     public interface IGitOperator
     {
+        Task<string> Clone(
+            string sourceUrl,
+            LocalRepositoryDirectoryPath localRepositoryDirectoryPath);
+
         Task Fetch(LocalRepositoryDirectoryPath localRepositoryDirectoryPath);
 
         /// <summary>

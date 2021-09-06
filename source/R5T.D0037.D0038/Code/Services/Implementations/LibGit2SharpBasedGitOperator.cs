@@ -12,6 +12,15 @@ namespace R5T.D0037.D0038
         private ILibGit2SharpOperator LibGit2SharpOperator { get; }
 
 
+        public Task<string> Clone(
+            string sourceUrl,
+            LocalRepositoryDirectoryPath localRepositoryDirectoryPath)
+        {
+            return this.LibGit2SharpOperator.Clone(
+                sourceUrl,
+                localRepositoryDirectoryPath);
+        }
+
         public LibGit2SharpBasedGitOperator(ILibGit2SharpOperator libGit2SharpOperator)
         {
             this.LibGit2SharpOperator = libGit2SharpOperator;

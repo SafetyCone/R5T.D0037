@@ -1,6 +1,6 @@
 ﻿using System;
 
-using R5T.D0037.A001;
+using R5T.D0037.A002;
 
 
 namespace System
@@ -11,7 +11,7 @@ namespace System
             IServiceAggregation other)
             where T : IServiceAggregation
         {
-            (aggregation as R5T.D0038.A001.IServiceAggregation).FillFrom(other);
+            (aggregation as R5T.D0038.A002.IServiceAggregation).FillFrom(other);
 
             (aggregation as R5T.D0037.D0038.IServiceAggregationIncrement).FillFrom(other);
 

@@ -1,7 +1,9 @@
 ﻿using System;
 
+using R5T.D0037.D0038;
 
-namespace R5T.D0037.A001
+
+namespace System
 {
     public static class IServiceAggregationIncrementExtensions
     {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using R5T.T0010;
@@ -11,6 +12,9 @@ namespace R5T.D0037
         Task<string> Clone(
             string sourceUrl,
             LocalRepositoryDirectoryPath localRepositoryDirectoryPath);
+
+        Task Commit(LocalRepositoryDirectoryPath localRepositoryDirectoryPath,
+            string commitMessage);
 
         Task Fetch(LocalRepositoryDirectoryPath localRepositoryDirectoryPath);
 
@@ -37,5 +41,12 @@ namespace R5T.D0037
         /// Gets the latest revision for the master branch of the local repository containing the file or directory path, *not* the file or directory itself.
         /// </summary>
         Task<RevisionIdentity> GetLatestLocalMasterRevision(LocalRepositoryContainedPath localPath);
+
+        Task<string[]> ListAllUnstagedPaths(LocalRepositoryDirectoryPath localRepositoryDirectoryPath);
+
+        Task Push(LocalRepositoryDirectoryPath localRepositoryDirectoryPath);
+
+        Task Stage(LocalRepositoryDirectoryPath localRepositoryDirectoryPath,
+            IEnumerable<string> filePaths);
     }
 }

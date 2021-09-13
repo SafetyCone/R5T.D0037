@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using R5T.D0038;
@@ -16,7 +17,7 @@ namespace R5T.D0037.D0038
             string sourceUrl,
             LocalRepositoryDirectoryPath localRepositoryDirectoryPath)
         {
-            return this.LibGit2SharpOperator.Clone(
+            return this.LibGit2SharpOperator.CloneNonIdempotent(
                 sourceUrl,
                 localRepositoryDirectoryPath);
         }
@@ -49,6 +50,27 @@ namespace R5T.D0037.D0038
         public Task Fetch(LocalRepositoryDirectoryPath localRepositoryDirectoryPath)
         {
             return this.LibGit2SharpOperator.Fetch(localRepositoryDirectoryPath);
+        }
+
+        public Task Commit(LocalRepositoryDirectoryPath localRepositoryDirectoryPath, string commitMessage)
+        {
+            return this.LibGit2SharpOperator.Commit(localRepositoryDirectoryPath,
+                commitMessage);
+        }
+
+        public Task<string[]> ListAllUnstagedPaths(LocalRepositoryDirectoryPath localRepositoryDirectoryPath)
+        {
+            return this.LibGit2SharpOperator.ListAllUnstagedPaths(localRepositoryDirectoryPath);
+        }
+
+        public Task Push(LocalRepositoryDirectoryPath localRepositoryDirectoryPath)
+        {
+            return this.LibGit2SharpOperator.Push(localRepositoryDirectoryPath);
+        }
+
+        public Task Stage(LocalRepositoryDirectoryPath localRepositoryDirectoryPath, IEnumerable<string> filePaths)
+        {
+            return this.LibGit2SharpOperator.Stage(localRepositoryDirectoryPath, filePaths);
         }
     }
 }

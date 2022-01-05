@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using R5T.T0010;
+using R5T.T0064;
 
 
 namespace R5T.D0037
 {
-    public interface IGitOperator
+    [ServiceDefinitionMarker]
+    public interface IGitOperator : IServiceDefinition
     {
         Task<string> Clone(
             string sourceUrl,

@@ -4,11 +4,13 @@ using System.Threading.Tasks;
 
 using R5T.D0038;
 using R5T.T0010;
+using R5T.T0064;
 
 
 namespace R5T.D0037.D0038
 {
-    public class LibGit2SharpBasedGitOperator : IGitOperator
+    [ServiceImplementationMarker]
+    public class LibGit2SharpBasedGitOperator : IGitOperator, IServiceImplementation
     {
         private ILibGit2SharpOperator LibGit2SharpOperator { get; }
 

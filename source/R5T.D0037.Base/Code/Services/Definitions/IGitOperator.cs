@@ -34,6 +34,8 @@ namespace R5T.D0037
         /// </summary>
         Task<bool> HasUnpulledOriginMasterChanges(LocalRepositoryDirectoryPath localRepositoryDirectoryPath);
 
+        Task<bool> IsRepository(string directoryPath);
+
         /// <summary>
         /// Gets the origin repository URL for a file or directory path within a local repository.
         /// </summary>

@@ -74,5 +74,10 @@ namespace R5T.D0037.D0038
         {
             return this.LibGit2SharpOperator.Stage(localRepositoryDirectoryPath, filePaths);
         }
+
+        public Task<bool> IsRepository(string directoryPath)
+        {
+            return this.LibGit2SharpOperator.IsRepository(directoryPath);
+        }
     }
 }

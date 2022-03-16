@@ -26,6 +26,35 @@ namespace System
             await gitOperator.Push(localRepositoryDirectoryPath);
         }
 
+        public static Task CheckIn(this IGitOperator gitOperator,
+            string localRepositoryDirectoryPath,
+            string commitMessage)
+        {
+            return gitOperator.CheckIn(
+                LocalRepositoryDirectoryPath.From(localRepositoryDirectoryPath),
+                commitMessage);
+        }
+
+        public static async Task<string> Clone(this IGitOperator gitOperator,
+            string sourceUrl,
+            string localRepositoryDirectoryPath)
+        {
+            var output = await gitOperator.Clone(
+                sourceUrl,
+                LocalRepositoryDirectoryPath.From(localRepositoryDirectoryPath));
+
+            return output;
+        }
+
+        public static async Task<string> GetRemoteUrl(this IGitOperator gitOperator,
+            string repositoryPath)
+        {
+            var remoteRepositoryUrl = await gitOperator.GetOriginRepositoryUrlAsync(
+                LocalRepositoryContainedPath.From(repositoryPath));
+
+            return remoteRepositoryUrl.Value;
+        }
+
         public static async Task StageAllUnstagedPaths(this IGitOperator gitOperator,
             LocalRepositoryDirectoryPath localRepositoryDirectoryPath)
         {

@@ -16,6 +16,10 @@ namespace R5T.D0037
             LocalRepositoryDirectoryPath localRepositoryDirectoryPath);
 
         Task Commit(LocalRepositoryDirectoryPath localRepositoryDirectoryPath,
+            string filePath,
+            string commitMessage);
+
+        Task Commit(LocalRepositoryDirectoryPath localRepositoryDirectoryPath,
             string commitMessage);
 
         Task Fetch(LocalRepositoryDirectoryPath localRepositoryDirectoryPath);

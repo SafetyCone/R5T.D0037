@@ -54,6 +54,15 @@ namespace R5T.D0037.D0038
             return this.LibGit2SharpOperator.Fetch(localRepositoryDirectoryPath);
         }
 
+        public Task Commit(LocalRepositoryDirectoryPath localRepositoryDirectoryPath,
+            string filePath,
+            string commitMessage)
+        {
+            return this.LibGit2SharpOperator.Commit(localRepositoryDirectoryPath,
+                filePath,
+                commitMessage);
+        }
+
         public Task Commit(LocalRepositoryDirectoryPath localRepositoryDirectoryPath, string commitMessage)
         {
             return this.LibGit2SharpOperator.Commit(localRepositoryDirectoryPath,

@@ -1,6 +1,6 @@
 ﻿using System;
 
-using R5T.Magyar;
+using R5T.Magyar.Extensions;
 using R5T.Suebia;
 
 using R5T.D0037.D0038;
@@ -26,7 +26,7 @@ namespace R5T.D0037.A002
                 libGit2SharpOperatorServiceActions.LibGit2SharpOperatorAction);
 
             var output = new ServiceActionAggregation()
-                .As<ServiceActionAggregation, IServiceActionAggregationIncrement>(increment =>
+                .ModifyAs<ServiceActionAggregation, IServiceActionAggregationIncrement>(increment =>
                 {
                     increment.GitOperatorAction = libGit2SharpBasedGitOperatorAction;
                 })
